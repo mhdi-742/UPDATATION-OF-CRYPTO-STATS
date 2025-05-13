@@ -1,4 +1,5 @@
 import { mongoose } from "mongoose";
+// The basic Mongo DB schema
 const Schema=mongoose.Schema;
 const CoinDataSchema= new Schema({
  bitcoin:{

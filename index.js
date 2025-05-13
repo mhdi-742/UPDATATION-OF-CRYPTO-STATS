@@ -1,11 +1,16 @@
+//import statements
 import express from 'express';
 import { mongoose } from 'mongoose';
 import cors from 'cors'
 import routes from './routes/routes.js';
 import { connect, StringCodec } from "nats";
 import CoinData from './models/CoinData.js';
+
+//some constants
 const apiserver=express();
 const url="mongodb://localhost:27017/koinx";
+
+//mongo db connections
 mongoose.connect(url)
 .then((res)=>console.log("connected to DB"))
 .catch((err)=>console.log(err));
@@ -17,8 +22,10 @@ apiserver.use(express.json());
 apiserver.listen(8000,()=>{
 console.log("connected");
 });
+// routes is the middleware to handle routes 
 apiserver.use(routes);
 
+// function to store crypto stats
 
 const storeCryptoStats =async()=>{
     console.log("this is a function");
@@ -60,7 +67,6 @@ const storeCryptoStats =async()=>{
             dailychange:matic_change
         }
     })
-    console.log(create);
  }
  else {
    if(data[0].bitcoin.currentprice.length>101)
@@ -85,11 +91,11 @@ const storeCryptoStats =async()=>{
    data[0].matic_network.marketcap.push(result['matic-network'].usd_market_cap);
    data[0].matic_network.dailychange.push(result['matic-network'].usd_24h_change);
    const updatedata=await CoinData.updateMany({},{$set:data[0]});
-   console.log(updatedata);
  }
 
 }
 
+// the main function that works as subscriber 
 const main=async()=>{
     const nc=await connect ({
         servers:[
@@ -103,7 +109,7 @@ const main=async()=>{
         const data=JSON.parse(sc.decode(m.data));
         if(data.trigger==="update")
         {
-            storeCryptoStats();
+            storeCryptoStats();//function call to store stats every time the publisher sends message
         }
   }
   console.log("subscription closed");

@@ -2,7 +2,7 @@ import express from 'express';
 
 const router=express();
 router.use(express.json())
-
+// function to calculate standard diviation
 const getStandardDeviation= (array)=> {
  let mean=0.0;
  let sum=0.0;
@@ -25,10 +25,12 @@ const getStandardDeviation= (array)=> {
  return ans;
 }
 
+// home 
 router.get('/',async(req,res)=>{
     res.send("hello");
 })
 
+// this is for fetching stats
 
 router.get('/stats',async(req,res)=>{
 
@@ -71,6 +73,7 @@ router.get('/stats',async(req,res)=>{
      res.send(query);
 
 })
+// this is for calculating SD
 router.get('/diviation',async(req,res)=>{
   const query=req.body.coin;
      let data=await CoinData.find({});
