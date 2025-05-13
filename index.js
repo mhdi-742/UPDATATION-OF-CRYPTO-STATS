@@ -1,7 +1,7 @@
 const express=require('express');
 const apiserver=express();
 const mongoose=require('mongoose');
-const url="mongodb://localhost:27017/";
+const url="mongodb://localhost:27017/koinx";
 let cors=require('cors');
 const routes=require('./routes/routes');
 mongoose.connect(url)
@@ -15,6 +15,5 @@ apiserver.use(express.json());
 apiserver.listen(8000,()=>{
 console.log("connected");
 });
-const storeCryptoStats =()=>{
-    console.log("this is a function");
-}
+apiserver.use(routes);
+

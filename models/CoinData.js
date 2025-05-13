@@ -3,35 +3,35 @@ const Schema=mongoose.Schema;
 const CoinDataSchema= new Schema({
  bitcoin:{
     currentprice:{
-      type:[mongoose.Schema.Types.Decimal128]
+      type:[Number]
     },
     marketcap:{
-       type:[mongoose.Schema.Types.Decimal128]
+       type:[Number]
     },
     dailychange:{
-        type:[mongoose.Schema.Types.Decimal128]
+        type:[Number]
     }
  },
  ethereum:{
     currentprice:{
-      type:[mongoose.Schema.Types.Decimal128]
+      type:[Number]
     },
     marketcap:{
-       type:[mongoose.Schema.Types.Decimal128]
+       type:[Number]
     },
     dailychange:{
-        type:[mongoose.Schema.Types.Decimal128]
+        type:[Number]
     }
  },
  matic_network:{
     currentprice:{
-      type:[mongoose.Schema.Types.Decimal128]
+      type:[Number]
     },
     marketcap:{
-       type:[mongoose.Schema.Types.Decimal128]
+       type:[Number]
     },
     dailychange:{
-        type:[mongoose.Schema.Types.Decimal128]
+        type:[Number]
     }
  }
 },{timestamps:true});
