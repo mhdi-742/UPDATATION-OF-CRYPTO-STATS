@@ -1,4 +1,4 @@
-const mongoose=require('mongoose');
+import { mongoose } from "mongoose";
 const Schema=mongoose.Schema;
 const CoinDataSchema= new Schema({
  bitcoin:{
@@ -36,4 +36,4 @@ const CoinDataSchema= new Schema({
  }
 },{timestamps:true});
 const CoinData=mongoose.model('User',CoinDataSchema);
-module.exports=CoinData; 
+export default CoinData;
