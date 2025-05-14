@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "nats": "^2.29.3",
+    "nodemon": "^3.1.10"
+  },
+  "type": "module"
+}
