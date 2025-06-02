@@ -52,8 +52,4 @@
 
 ```bash
 docker run -d --name nats-server -p 4222:4222 nats
-
-## P.S.
-
-> COULD HAVE DONE MORE BUT TOMORROW I HAVE EXAM.
 ```
